@@ -1,0 +1,24 @@
+{
+  "name": "filesharer-nodejs",
+  "version": "0.0.0",
+  "description": "filesharer-nodejs =================",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/PaulSec/filesharer-nodejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PaulSec/filesharer-nodejs/issues"
+  },
+  "homepage": "https://github.com/PaulSec/filesharer-nodejs",
+  "dependencies": {
+    "body-parser": "^1.9.3",
+    "express": "^4.10.4"
+  }
+}
