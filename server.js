@@ -3,6 +3,7 @@ var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
 var https      = require('https');
 var fs         = require('fs');
+var model      = require('./lib/model.js');
 
 var options = {
     key: fs.readFileSync('./ca.key'),
@@ -20,6 +21,14 @@ var router = express.Router();              // get an instance of the express Ro
 
 router.get('/', function(req, res) {
    res.sendFile(__dirname + '/views/index.html');
+});
+
+router.get('/create/:filename', function(req, res) {
+    console.log(req.params.filename);
+    model.createFile(req.params.filename, function(file) {
+        console.log(file);
+        res.send('test');
+    });
 });
 
 app.use('/', router);
