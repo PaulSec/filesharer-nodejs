@@ -23,11 +23,28 @@ router.get('/', function(req, res) {
    res.sendFile(__dirname + '/views/index.html');
 });
 
-router.get('/create/:filename', function(req, res) {
-    console.log(req.params.filename);
-    model.createFile(req.params.filename, function(file) {
+router.post('/file', function(req, res) {
+    // need the filename
+    // need the content
+    if (req.body.filename == undefined || req.body.content == undefined) {
+        res.end("{}");
+    } else {
+        model.createFile(req.body.filename, function (file) {
+            console.log(file);
+            res.send(file._id);
+        });
+    }
+});
+
+router.get('/file/:id', function (req, res) {
+    id = req.params.id.split('#')[0];
+    model.getFile(id, function (file) {
         console.log(file);
-        res.send('test');
+        if (file.length > 0) {
+            res.send(file[0]._id);
+        } else {
+            res.send("File Not Found");
+        }
     });
 });
 
