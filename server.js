@@ -11,13 +11,15 @@ var options = {
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use("/js", express.static(__dirname + '/public/js')); // javascript folder
+app.use("/css", express.static(__dirname + '/public/css')); // css folder
 
-var port = process.env.PORT || 8080;        // set our port
+var port = process.env.PORT || 8443;        // set our port
 
 var router = express.Router();              // get an instance of the express Router
 
 router.get('/', function(req, res) {
-    res.json({ message: 'hooray! welcome to our website!' });   
+   res.sendFile(__dirname + '/views/index.html');
 });
 
 app.use('/', router);
