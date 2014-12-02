@@ -31,7 +31,7 @@ router.post('/file', function(req, res) {
     } else {
         model.createFile(req.body.filename, function (file) {
             console.log(file);
-            res.send(file._id);
+            res.send("{'id': '" + file._id + "'}");
         });
     }
 });
